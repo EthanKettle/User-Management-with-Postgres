@@ -4,7 +4,10 @@
   "description": "",
   "main": "serve.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently -n 'serve,client' -c 'red,green' \"nodemon serve.js\" \"npm run client\" "
   },
   "repository": {
     "type": "git",
@@ -22,6 +25,7 @@
     "concurrently": "^7.3.0",
     "express": "^4.18.1",
     "mongoose": "^6.5.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19"
   }
 }
