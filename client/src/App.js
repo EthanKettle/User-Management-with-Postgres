@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  render() {
+    return (
+      <div>
+        <h2>Database App</h2>
+        <form>
+          <div class="form-input">
+            <input type="Number" name="id" value="" onChange={id}/>
+          </div>
+          <div class="form-input">
+            <input type="text" name="firstName" value="" onChange={firstName}/>
+          </div>
+          <div class="form-input">
+            <input type="text" name="lastName" value="" onChange={lastName}/>
+          </div>
+          <div class="form-input">
+            <input type="text" name="email" value="" onChange={email}/>
+          </div>
+          <div class="form-input">
+            <input type="Number" name="age" value="" onChange={age}/>
+          </div>
+          <button>Submit Form</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default App;
