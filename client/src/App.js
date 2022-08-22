@@ -9,25 +9,41 @@ class App extends React.Component{
     age: 0,
 
   }
+
+  handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+
+    this.setState({
+      [name]: value
+    });
+
+  };
+
+  submit = (event) => {
+    event.preventDefault
+  }
+
   render() {
     return (
       <div>
         <h2>Database App</h2>
-        <form>
-          {/* <div class="form-input">
-            <input type="Number" name="id" placeholder="id" value="" onChange={id}/>
-          </div> */}
+        <form onSubmit={this.submit}>
           <div class="form-input">
-            <input type="text" name="firstName" placeholder="First Name" value="" onChange={firstName}/>
+            <input type="Number" name="id" placeholder="id" value={this.state.id} onChange={this.handleChange}/>
           </div>
           <div class="form-input">
-            <input type="text" name="lastName" placeholder="Last Name" value="" onChange={lastName}/>
+            <input type="text" name="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleChange}/>
           </div>
           <div class="form-input">
-            <input type="text" name="email" placeholder="Email@example" value="" onChange={email}/>
+            <input type="text" name="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleChange}/>
           </div>
           <div class="form-input">
-            <input type="Number" name="age" placeholder="0" value="" onChange={age}/>
+            <input type="text" name="email" placeholder="Email@example" value={this.state.email} onChange={this.handleChange}/>
+          </div>
+          <div class="form-input">
+            <input type="Number" name="age" placeholder="0" value={this.state.age} onChange={this.handleChange}/>
           </div>
           <button>Submit Form</button>
         </form>
