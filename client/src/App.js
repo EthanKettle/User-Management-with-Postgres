@@ -1,10 +1,13 @@
 import React from 'react';
+import axios from 'axios';
+
+const idRan = Math.floor(Math.random()*100000)
 
 class App extends React.Component{
   state = {
-    id: 0,
-    firstName: '',
-    lastName: '',
+    id: idRan,
+    fName: '',
+    lName: '',
     email: '',
     age: 0,
 
@@ -22,7 +25,27 @@ class App extends React.Component{
   };
 
   submit = (event) => {
-    event.preventDefault
+    event.preventDefault();
+
+    const payload = {
+      id: this.state.id,
+      fName: this.state.fName,
+      lName: this.state.lName,
+      email: this.state.email,
+      age: this.state.age,
+    };
+
+    axios({
+      url: 'http://localhost:8080/api/save',
+      method: 'POST',
+      data: payload
+    })
+    .then(() => {
+      console.log('Data has been sent to server');
+    })
+    .catch(() => {
+      console.log('ERROR');
+    });
   }
 
   render() {
@@ -34,10 +57,10 @@ class App extends React.Component{
             <input type="Number" name="id" placeholder="id" value={this.state.id} onChange={this.handleChange}/>
           </div>
           <div class="form-input">
-            <input type="text" name="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleChange}/>
+            <input type="text" name="fName" placeholder="First Name" value={this.state.fName} onChange={this.handleChange}/>
           </div>
           <div class="form-input">
-            <input type="text" name="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleChange}/>
+            <input type="text" name="lName" placeholder="Last Name" value={this.state.lName} onChange={this.handleChange}/>
           </div>
           <div class="form-input">
             <input type="text" name="email" placeholder="Email@example" value={this.state.email} onChange={this.handleChange}/>

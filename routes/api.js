@@ -6,13 +6,13 @@ const useData = require('../modles/User')
 
 //routes
 router.get('/', (req,res) => {
-    const data = {
-        id: 0,
-        fName: "Adam",
-        lName: "Adam",
-        email: "blah@blah",
-        age: 5
-    }
+    // const data = [{
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // }]
 
     useData.find({  })
         .then(() => {
@@ -25,7 +25,14 @@ router.get('/', (req,res) => {
     
 })
 
-router.get('/name', (req,res) => {
+router.post('/name', (req,res) => {
+    console.log("First Name: ", req.fName);
+    res.json({
+        msg: "We recived your data bro!"
+    });
+})
+
+router.get('/save', (req,res) => {
     const data = {
         id: 0,
         fName: "Bob",
@@ -33,7 +40,7 @@ router.get('/name', (req,res) => {
         email: "blah@blah",
         age: 5
     }
-    res.json(data)
+    res.json(data);
 })
 
 module.exports = router;
