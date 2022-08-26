@@ -36,7 +36,7 @@ class App extends React.Component{
     };
 
     axios({
-      url: 'http://localhost:8080/api/save',
+      url: '/api/save',
       method: 'POST',
       data: payload
     })
@@ -53,19 +53,19 @@ class App extends React.Component{
       <div>
         <h2>Database App</h2>
         <form onSubmit={this.submit}>
-          <div class="form-input">
+          <div className="form-input">
             <input type="Number" name="id" placeholder="id" value={this.state.id} onChange={this.handleChange}/>
           </div>
-          <div class="form-input">
+          <div className="form-input">
             <input type="text" name="fName" placeholder="First Name" value={this.state.fName} onChange={this.handleChange}/>
           </div>
-          <div class="form-input">
+          <div className="form-input">
             <input type="text" name="lName" placeholder="Last Name" value={this.state.lName} onChange={this.handleChange}/>
           </div>
-          <div class="form-input">
+          <div className="form-input">
             <input type="text" name="email" placeholder="Email@example" value={this.state.email} onChange={this.handleChange}/>
           </div>
-          <div class="form-input">
+          <div className="form-input">
             <input type="Number" name="age" placeholder="0" value={this.state.age} onChange={this.handleChange}/>
           </div>
           <button>Submit Form</button>
