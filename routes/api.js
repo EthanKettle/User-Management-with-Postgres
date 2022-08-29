@@ -6,13 +6,84 @@ const useData = require('../modles/User')
 
 //routes
 router.get('/', (req,res) => {
-    // const data = [{
+    // const startData = [{
     //     id: 0,
     //     fName: "Adam",
     //     lName: "Adam",
     //     email: "blah@blah",
     //     age: 5
-    // }]
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // {
+    //     id: 0,
+    //     fName: "Adam",
+    //     lName: "Adam",
+    //     email: "blah@blah",
+    //     age: 5
+    // },
+    // ]
 
     useData.find({  })
         .then(() => {
@@ -25,14 +96,25 @@ router.get('/', (req,res) => {
     
 })
 
-router.post('/name', (req,res) => {
-    console.log("First Name: ", req.fName);
+router.post('/save', (req,res) => {
+
     res.json({
         msg: "We recived your data bro!"
     });
 })
 
-router.get('/save', (req,res) => {
+router.get('/name', (req,res) => {
+    const data = {
+        id: 0,
+        fName: "Bob",
+        lName: "Bob",
+        email: "blah@blah",
+        age: 5
+    }
+    res.json(data);
+})
+
+router.get('/submit', (req,res) => {
     const data = {
         id: 0,
         fName: "Bob",

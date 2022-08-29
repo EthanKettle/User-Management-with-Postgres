@@ -32,7 +32,7 @@ class App extends React.Component{
       fName: this.state.fName,
       lName: this.state.lName,
       email: this.state.email,
-      age: this.state.age,
+      age: this.state.age
     };
 
     axios({
@@ -45,7 +45,7 @@ class App extends React.Component{
     })
     .catch(() => {
       console.log('ERROR');
-    });
+    });;
   }
 
   render() {
