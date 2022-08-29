@@ -97,10 +97,19 @@ router.get('/', (req,res) => {
 })
 
 router.post('/save', (req,res) => {
+    console.log(req.body);
+    const data = req.body;
+    const newData = new useData(data);
 
-    res.json({
-        msg: "We recived your data bro!"
-    });
+    newData.save((error) => {
+        if (error) {
+            res.status(500).json({msg: "oops we messed up sad face"});
+            return;
+        } 
+        return res.json({
+            msg: "We recived your data bro!"
+        });
+    })
 })
 
 router.get('/name', (req,res) => {

@@ -10,18 +10,11 @@ class App extends React.Component{
     lName: '',
     email: '',
     age: 0,
-
   }
 
-  handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-
-    this.setState({
-      [name]: value
-    });
-
+  handleChange = ({ target }) => {
+    const {name, value} = target;
+    this.setState({[name]: value});
   };
 
   submit = (event) => {
@@ -36,17 +29,28 @@ class App extends React.Component{
     };
 
     axios({
-      url: '/api/save',
+      url: 'http://localhost:8080/api/save',
       method: 'POST',
       data: payload
     })
     .then(() => {
       console.log('Data has been sent to server');
+      this.resetInput();
     })
     .catch(() => {
       console.log('ERROR');
     });;
   }
+
+  resetInput = () => {
+    this.setState({
+      id: idRan,
+      fName: '',
+      lName: '',
+      email: '',
+      age: 0,
+    })
+  };
 
   render() {
     return (
