@@ -20,11 +20,14 @@ class App extends React.Component{
   getUseData = () => {
     axios.get('http://localhost:8080/api')
     .then((response) => {
+      console.log(response);
       const data = response.data;
-      this.setState({post: data});
+      console.log(data);
+      this.setState({users: data})
+      console.log("got the data");
     })
     .catch(() => {
-      alert("ERROR! Couldnt retrieve data")
+      // alert("ERROR! Couldnt retrieve data")
     });
   }
 
@@ -69,14 +72,14 @@ class App extends React.Component{
     })
   };
 
-  displayUserData = (data) => {
-    return data.map((data, index) => {
+  displayUserData = (users) => {
+    return users.map((users, index) => {
       <tr key={index}>
-        <th>{data.id}</th>
-        <th>{data.fName}</th>
-        <th>{data.lName}</th>
-        <th>{data.email}</th>
-        <th>{data.age}</th>
+        <th>{users.id}</th>
+        <th>{users.fName}</th>
+        <th>{users.lName}</th>
+        <th>{users.email}</th>
+        <th>{users.age}</th>
       </tr>
     })
   }
