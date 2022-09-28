@@ -20,15 +20,16 @@ class App extends React.Component{
   getUseData = () => {
     axios.get('http://localhost:8080/api')
     .then((response) => {
-      console.log(response);
       const data = response.data;
-      console.log(data);
+      console.log(data)
+      console.log('Successfully read data')
       this.setState({users: data})
-      console.log("got the data");
+      console.log({users: data})
+
     })
-    .catch(() => {
-      // alert("ERROR! Couldnt retrieve data")
-    });
+    .catch((error) => {
+      console.log('Data not found')
+    })
   }
 
   handleChange = ({ target }) => {
@@ -57,7 +58,7 @@ class App extends React.Component{
       this.resetInput();
       this.displayUserData();
     })
-    .catch(() => {
+    .catch((error) => {
       console.log('ERROR');
     });;
   }
@@ -73,15 +74,19 @@ class App extends React.Component{
   };
 
   displayUserData = (users) => {
-    return users.map((users, index) => {
-      <tr key={index}>
-        <th>{users.id}</th>
-        <th>{users.fName}</th>
-        <th>{users.lName}</th>
-        <th>{users.email}</th>
-        <th>{users.age}</th>
-      </tr>
-    })
+    console.log("user data sent here");
+    console.log(users);
+    if (!users.length) return null;
+    return users.map((user, index) => {
+      console.log(user);
+      <div key={index}>
+        <p>{user.id}</p>
+        <p>{user.fName}</p>
+        <p>{user.lName}</p>
+        <p>{user.email}</p>
+        <p>{user.age}</p>
+      </div>
+    });
   }
 
   render() {
@@ -106,9 +111,9 @@ class App extends React.Component{
           </div>
           <button>Submit Form</button>
         </form>
-        <table className='userData'>
+        <div className='userData'>
           {this.displayUserData(this.state.users)}
-        </table>
+        </div>
       </div>
     );
   }
