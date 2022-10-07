@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 
 const idRan = Math.floor(Math.random()*100000)
@@ -78,15 +78,24 @@ class App extends React.Component{
     console.log(users);
     if (!users.length) return null;
     return users.map((user, index) => {
-      console.log(user);
-      <div key={index}>
-        <p>{user.id}</p>
-        <p>{user.fName}</p>
-        <p>{user.lName}</p>
-        <p>{user.email}</p>
-        <p>{user.age}</p>
-      </div>
+      return <tr key={index}>
+        <td>{user.id}</td>
+        <td>{user.fName}</td>
+        <td>{user.lName}</td>
+        <td>{user.email}</td>
+        <td>{user.age}</td>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+      </tr>
     });
+
+    // EditUser = () => {
+    //   console.log("Edit Works");
+    // };
+
+    // DeleteUser = () => {
+    //   console.log("Delete Works");
+    // }
   }
 
   render() {
@@ -111,9 +120,9 @@ class App extends React.Component{
           </div>
           <button>Submit Form</button>
         </form>
-        <div className='userData'>
+        <table className='userData'>
           {this.displayUserData(this.state.users)}
-        </div>
+        </table>
       </div>
     );
   }
